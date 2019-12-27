@@ -1,0 +1,15 @@
+from django.contrib import admin
+from django.urls import path,include
+from . import views
+
+app_name='Posts'
+
+urlpatterns = [
+
+    path('',views.PostList.as_view(), name='all'),
+    # path('new/', views.CreatePost.as_view(), name='create'),
+    path('new/', views.CreatePost.as_view(), name='create'),
+    path('by/<username>/',views.UsrPosts.as_view(), name='for_user'),
+    path('by/<username>/<int:pk>/',views.PostDetail.as_view(),name ='for_user'),
+    path('delete/<int:pk>/',views.DeletePost.as_view(), name='delete'),
+]
